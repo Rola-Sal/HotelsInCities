@@ -29,4 +29,5 @@ public class HotelController {
     public ArrayList<String> getAllNearestNumberHotels(@PathVariable Integer id , @PathVariable Integer number){
         return  hotelService.getAllNearestHotels(id , number);
     }
+
 }
