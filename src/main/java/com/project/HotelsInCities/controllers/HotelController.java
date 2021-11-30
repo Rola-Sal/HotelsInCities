@@ -30,4 +30,9 @@ public class HotelController {
         return  hotelService.getAllNearestHotels(id , number);
     }
 
+    @RequestMapping(method = GET ,value = "/cities/{cityID}/hotels/{hotelID}")
+    public String bookSpecificHotel( @PathVariable Integer cityID, @PathVariable Integer hotelID){
+        return hotelService.bookSpecificHotel(cityID, hotelID);
+    }
+
 }

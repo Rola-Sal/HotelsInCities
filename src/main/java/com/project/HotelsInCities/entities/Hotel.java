@@ -14,6 +14,8 @@ public class Hotel implements Comparable<Hotel> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name ;
+    private int hotelCapacity;
+    private int maxHotelCapacity;
 
     @JsonBackReference
     @ManyToOne
@@ -25,7 +27,7 @@ public class Hotel implements Comparable<Hotel> {
     Location location ;
 
 
-
+    @Transient
     Double distanceFromSpecificCity ;
 
     public Double getDistanceFromSpecificCity() {
@@ -72,6 +74,22 @@ public class Hotel implements Comparable<Hotel> {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public int getHotelCapacity() {
+        return hotelCapacity;
+    }
+
+    public void setHotelCapacity(int hotelCapacity) {
+        this.hotelCapacity = hotelCapacity;
+    }
+    public int getMaxHotelCapacity() {
+        return maxHotelCapacity;
+    }
+
+    public void setMaxHotelCapacity(int maxHotelCapacity) {
+        this.maxHotelCapacity = maxHotelCapacity;
+    }
+
 
     @Override
     public int compareTo(Hotel o) {

@@ -16,7 +16,6 @@ public class City {
     private int id;
     private String name;
 
-    //@JsonIgnoreProperties("city")
     @JsonManagedReference
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Set<Hotel> hotels;

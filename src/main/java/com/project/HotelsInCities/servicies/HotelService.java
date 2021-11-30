@@ -5,10 +5,7 @@ import com.project.HotelsInCities.entities.Hotel;
 import com.project.HotelsInCities.repos.CityRepository;
 import com.project.HotelsInCities.repos.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.sql.Connection;
 import java.util.*;
 
 @Service
@@ -64,4 +61,20 @@ public class HotelService {
         return hotelName;
     }
 
+    public String bookSpecificHotel(int cityID, int hotelID) {
+       if(!cityRepository.existsById(cityID))
+           return "No Hotel exist with this ID";
+        int hotelCapacity ;
+        if(hotelRepository.existsById(hotelID)){
+            String hotelName;
+            Optional<Hotel> hotel = hotelRepository.findById(hotelID);
+            hotelName= hotel.get().getName();
+            hotelCapacity = hotel.get().getHotelCapacity() + 1;
+            hotel.get().setHotelCapacity(hotelCapacity);
+            hotelRepository.save(hotel.get());
+            return (hotelName);
+        }
+
+        return "No Hotel exist with this ID";
+    }
 }

@@ -1,6 +1,4 @@
 
-
-
 create table location(
 id int primary KEY AUTO_INCREMENT,
 x double ,
@@ -20,6 +18,7 @@ id int primary KEY AUTO_INCREMENT,
 city_id int,
 location_id int,
 name varchar(20),
+hotelCapacity int,
 FOREIGN KEY (city_id)
 REFERENCES city(id),
 foreign key(location_id)

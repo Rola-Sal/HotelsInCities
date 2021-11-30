@@ -17,12 +17,19 @@ VALUES (85 , 40) ;
 INSERT INTO location (x, y)
 VALUES(95,35);
 
-INSERT INTO Hotel (name, location_id , city_id )
-VALUES ('Relax', (select id from location where x = 85 and y = 40) , (select id from city where name =  'Nablus'));
+INSERT INTO location (x, y)
+VALUES(75,20);
 
-INSERT INTO Hotel (name, location_id , city_id )
-VALUES ('Wow', (select id from location where x = 95 and y = 35) , (select id from city where name =  'Nablus'));
+INSERT INTO Hotel (name,max_hotel_capacity, hotel_capacity, location_id , city_id )
+VALUES ('Relax', 100,0, (select id from location where x = 85 and y = 40) , (select id from city where name =  'Nablus'));
 
+INSERT INTO Hotel (name,max_hotel_capacity,hotel_capacity, location_id , city_id )
+VALUES ('Wow',150,0, (select id from location where x = 95 and y = 35) , (select id from city where name =  'Nablus'));
+
+INSERT INTO Hotel (name, max_hotel_capacity,hotel_capacity, location_id , city_id )
+VALUES ('Nablus Hotel', 200, 0,(select id from location where x = 75 and y = 20) , (select id from city where name =  'Nablus'));
+
+DELETE FROM Hotel WHERE id = 5; 
 
 INSERT INTO location (x, y)
 VALUES (30 , 70) ;
@@ -30,8 +37,10 @@ INSERT INTO location (x, y)
  VALUES(10,90);
 
 
-INSERT INTO Hotel (name, location_id , city_id )
-VALUES ('Tulkarem Hotel', (select id from location where x = 30 and y = 70) , (select id from city where name =  'Tulkarem'));
+INSERT INTO Hotel (name,max_hotel_capacity,hotel_capacity , location_id , city_id )
+VALUES ('Tulkarem Hotel', 200,0, (select id from location where x = 30 and y = 70) , (select id from city where name =  'Tulkarem'));
 
-INSERT INTO Hotel (name, location_id , city_id )
-VALUES ('5 Stars', (select id from location where x = 10 and y = 90) , (select id from city where name =  'Tulkarem'));
+INSERT INTO Hotel (name, max_hotel_capacity,hotel_capacity, location_id , city_id )
+VALUES ('5 Stars', 200, 0,(select id from location where x = 10 and y = 90) , (select id from city where name =  'Tulkarem'));
+
+insert into hotels_customer(id ,hotel_id) values (1,1);
