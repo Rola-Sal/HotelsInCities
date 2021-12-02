@@ -64,17 +64,17 @@ public class HotelService {
     public String bookSpecificHotel(int cityID, int hotelID) {
        if(!cityRepository.existsById(cityID))
            return "No Hotel exist with this ID";
-        int hotelCapacity ;
-        if(hotelRepository.existsById(hotelID)){
-            String hotelName;
-            Optional<Hotel> hotel = hotelRepository.findById(hotelID);
-            hotelName= hotel.get().getName();
-            hotelCapacity = hotel.get().getHotelCapacity() + 1;
-            hotel.get().setHotelCapacity(hotelCapacity);
-            hotelRepository.save(hotel.get());
-            return (hotelName);
-        }
 
-        return "No Hotel exist with this ID";
+        int hotelCapacity ;
+        if(!hotelRepository.existsById(hotelID))
+            return "No Hotel exist with this ID";
+
+        String hotelName;
+        Optional<Hotel> hotel = hotelRepository.findById(hotelID);
+        hotelName= hotel.get().getName();
+        hotelCapacity = hotel.get().getHotelCapacity() + 1;
+        hotel.get().setHotelCapacity(hotelCapacity);
+        hotelRepository.save(hotel.get());
+        return (hotelName);
     }
 }
